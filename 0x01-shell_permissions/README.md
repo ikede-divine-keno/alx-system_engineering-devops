@@ -1,0 +1,1 @@
+This directory contains files with scripts for changing current users,printing effective username and groups of current user, changing owner of files, adding execution permissions to files, setting the mode of files among others.
