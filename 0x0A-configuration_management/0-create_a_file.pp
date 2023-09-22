@@ -1,6 +1,6 @@
 #A puppet manifest that creates a new file in directory /tmp
 
-File { '/tmp/school':
+file { '/tmp/school':
   ensure => file,
   path => '/tmp/school',
   mode => '0744',
