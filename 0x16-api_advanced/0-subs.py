@@ -9,7 +9,7 @@ def number_of_subscribers(subreddit):
     """ functions to return subscribers to a subreddit """
     url = f"https://www.reddit.com/r/{subreddit}/about.json"
     headers = {
-            "User-Agent": "Linux:subredditcheck:v1"  # Replace with your custom User-Agent
+            "User-Agent": "subredditcheck"  # Replace with your custom User-Agent
     }
 
     try:
