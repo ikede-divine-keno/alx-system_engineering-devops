@@ -28,7 +28,7 @@ def count_words(subreddit, word_list, hot_list=[], after="", count=0):
     if after is None:
         wrd = {val: 0 for val in word_list}
         for item in hot_list:
-            new_str = item.lower().split()
+            new_str = item.lower().split(' ')
             for key in new_str:
                 if key in wrd:
                     wrd[key] += 1
