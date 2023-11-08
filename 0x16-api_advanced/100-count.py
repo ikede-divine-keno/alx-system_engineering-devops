@@ -26,14 +26,18 @@ def count_words(subreddit, word_list, hot_list=[], after="", count=0):
         hot_list.append(c["data"]["title"])
 
     if after is None:
-        wrd = {val: 0 for val in word_list}
-        for item in hot_list:
-            new_str = item.lower().split(' ')
-            for key in new_str:
-                if key in wrd:
-                    wrd[key] += 1
-        srd = sorted(wrd.items(), key=lambda item: (-item[1], item[0]))
-        [print("{}: {}".format(key, val)) for key, val in srd if val]
-        return hot_list
+        try:
+            wrd = {val: 0 for val in word_list}
+            for item in hot_list:
+                new_str = item.lower().split(' ')
+                for key in new_str:
+                    if key in wrd:
+                        wrd[key] += 1
+            srd = sorted(wrd.items(), key=lambda item: (-item[1], item[0]))
+            [print("{}: {}".format(key, val)) for key, val in srd if val]
+            return hot_list
+        except [ValueError, TypeError, KeyError,
+                IndexError, AttributeError]:
+            return None
     else:
         return count_words(subreddit, word_list, hot_list, after, count)
