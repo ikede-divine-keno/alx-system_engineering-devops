@@ -3,7 +3,7 @@
 import requests
 
 
-def count_words(subreddit, word_list, hot_list=[], after="", count=0):
+def count_words(subreddit, word_list, hot_list=[], after=""):
     """Returns a list of titles of all hot posts on a given subreddit."""
     url = "https://www.reddit.com/r/{}/hot/.json".format(subreddit)
     headers = {
@@ -11,7 +11,6 @@ def count_words(subreddit, word_list, hot_list=[], after="", count=0):
     }
     params = {
         "after": after,
-        "count": count,
         "limit": 100
     }
     response = requests.get(url, headers=headers, params=params,
@@ -22,7 +21,6 @@ def count_words(subreddit, word_list, hot_list=[], after="", count=0):
     try:
         results = response.json()["data"]
         after = results["after"]
-        count += results["dist"]
         for c in results["children"]:
             hot_list.append(c["data"]["title"])
     except ValueError:
@@ -43,4 +41,4 @@ def count_words(subreddit, word_list, hot_list=[], after="", count=0):
                 IndexError, AttributeError]:
             return None
     else:
-        return count_words(subreddit, word_list, hot_list, after, count)
+        return count_words(subreddit, word_list, hot_list, after)
