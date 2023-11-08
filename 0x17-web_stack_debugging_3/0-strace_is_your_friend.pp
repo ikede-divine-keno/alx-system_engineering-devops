@@ -1,6 +1,6 @@
-# Puppet script that automates the fixing of bad extension '.phpp' to '.php' in the WordPress site file 'wp-settings.php'
+# automated puppet fix (to find out why Apache is returning a 500 error)
 
-exec { 'Fix-WordPress-site-settings':
-  command => 'sed -i "s/.phpp/.php/" /var/www/html/wp-settings.php',
-  provider=> shell,
+exec { 'Fix wordpress site':
+  command  => 'sudo sed -i "s/.phpp/.php/" /var/www/html/wp-settings.php',
+  provider => shell,
 }
